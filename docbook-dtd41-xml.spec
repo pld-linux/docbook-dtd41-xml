@@ -14,6 +14,7 @@ URL:		http://www.oasis-open.org/docbook/
 PreReq:		sgml-common >= 0.5
 Requires(post,preun):	/usr/bin/install-catalog
 BuildRequires:	unzip
+BuildRequires:	rpm-build >= 4.0.2-94
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildArch:	noarch
 
@@ -44,7 +45,7 @@ install *.dtd *.mod $RPM_BUILD_ROOT%{dtd_path}
 install *.ent $RPM_BUILD_ROOT%{dtd_path} || :
 cp -a ent $RPM_BUILD_ROOT%{dtd_path}
 
-%sgmlcat_fix $RPM_BUILD_ROOT%{sgmlcat_file} %{ver}
+%docbook_sgmlcat_fix $RPM_BUILD_ROOT%{sgmlcat_file} %{ver}
 
 # install catalog (but filter out ISO entities)
 #grep -v 'ISO ' docbook.cat >> $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/xml-dtd-%{ver}/catalog
