@@ -9,6 +9,7 @@ Vendor:		OASIS
 License:	Free
 Group:		Applications/Publishing/XML
 Source0:	http://www.oasis-open.org/docbook/xml/%{ver}/docbkx%{sver}.zip
+# Source0-md5:	90afec959a2a8c8636b121c198a30de8
 Patch0:		%{name}-dbcentx.patch
 URL:		http://www.oasis-open.org/docbook/
 PreReq:		sgml-common >= 0.5
