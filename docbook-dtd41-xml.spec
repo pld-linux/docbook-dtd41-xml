@@ -26,7 +26,7 @@ BuildArch:	noarch
 %description
 DocBook is an XML/SGML vocabulary particularly well suited to books and papers
 about computer hardware and software (though it is by no means limited to only
-these applications).                 
+these applications).
 
 %description -l pl
 DocBook DTD jest zestawem definicji dokumentów XML/SGML przeznaczonych do
