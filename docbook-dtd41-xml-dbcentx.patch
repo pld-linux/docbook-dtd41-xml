@@ -1,5 +1,5 @@
---- dbcentx.mod.orig	Fri Dec  8 10:11:43 2000
-+++ dbcentx.mod	Fri Dec  8 10:25:13 2000
+--- docbook-dtd41-xml-1.0/dbcentx.mod.orig	Fri Dec  8 10:11:43 2000
++++ docbook-dtd41-xml-1.0/dbcentx.mod	Fri Dec  8 10:25:13 2000
 @@ -50,153 +50,115 @@
  
  <!ENTITY % ISOamsa.module "INCLUDE">
