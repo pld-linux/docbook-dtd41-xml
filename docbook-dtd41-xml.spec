@@ -1,10 +1,10 @@
-Summary:	Davenport Group DocBook DTD for technical documentation
-Summary(pl):	DocBook DTD przeznaczone do pisania dokumentacji technicznej
+Summary:	XML/SGML DocBook DTD 4.1
+Summary(pl):	XML/SGML DocBook DTD 4.1
 %define ver	4.1
 %define sver	41
 Name:		docbook-dtd%{sver}-xml
 Version:	1.0
-Release:	11
+Release:	12
 Vendor:		OASIS
 License:	Free
 Group:		Applications/Publishing/XML
@@ -17,41 +17,34 @@ BuildRequires:	unzip
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildArch:	noarch
 
+%define dtd_path		%{_datadir}/sgml/docbook/xml-dtd-%{ver}
+%define	xmlcat_file		%{dtd_path}/catalog.xml
+%define	sgmlcat_file	%{dtd_path}/catalog
+
 %description
-OASIS DocBook DTD for technical documentation.
+DocBook is an XML/SGML vocabulary particularly well suited to books and papers
+about computer hardware and software (though it is by no means limited to only
+these applications).                 
 
 %description -l pl
-DocBook DTD jest zestawem definicji dokumentów przeznaczonych do
-tworzenia dokumentacji programistycznej. Stosowany jest do pisania
-podrêczników systemowych, instrukcji technicznych jak i wielu innych
-ciekawych rzeczy.
+DocBook DTD jest zestawem definicji dokumentów XML/SGML przeznaczonych do
+tworzenia dokumentacji technicznej. Stosowany jest do pisania podrêczników
+systemowych, instrukcji jak i wielu innych ciekawych rzeczy.
 
 %prep
-%setup -q -c -T
-unzip -qa %{SOURCE0}
+%setup -q -c
 chmod -R a+rX *
 %patch0 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/xml-dtd-%{ver}
+install -d $RPM_BUILD_ROOT%{dtd_path}
 
-install *.dtd *.mod $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/xml-dtd-%{ver}
-install *.ent $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/xml-dtd-%{ver} || :
-cp -a ent $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/xml-dtd-%{ver}
+install *.dtd *.mod $RPM_BUILD_ROOT%{dtd_path}
+install *.ent $RPM_BUILD_ROOT%{dtd_path} || :
+cp -a ent $RPM_BUILD_ROOT%{dtd_path}
 
-# associate default declaration for xml
-# and map system identifier for xml because opensp seems to misinterpret
-# xml-style system identifiers (file://...)
-cat <<EOF >>$RPM_BUILD_ROOT%{_datadir}/sgml/docbook/xml-dtd-%{ver}/catalog
-
-  -- default decl --
-DTDDECL "-//OASIS//DTD DocBook XML V%{ver}//EN" "../../xml.dcl"
-  -- hacks for opensp --
-SYSTEM "file://%{_datadir}/sgml/docbook/xml-dtd-%{ver}/docbookx.dtd" "%{_datadir}/sgml/docbook/xml-dtd-%{ver}/docbookx.dtd"
-SYSTEM "http://www.oasis-open.org/docbook/xml/%{ver}/docbookx.dtd"                  "%{_datadir}/sgml/docbook/xml-dtd-%{ver}/docbookx.dtd"
-
-EOF
+%sgmlcat_fix $RPM_BUILD_ROOT%{sgmlcat_file} %{ver}
 
 # install catalog (but filter out ISO entities)
 #grep -v 'ISO ' docbook.cat >> $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/xml-dtd-%{ver}/catalog
