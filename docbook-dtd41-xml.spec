@@ -34,7 +34,8 @@ chmod -R a+rX *
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/xml-dtd-%{ver}
 
-install *.dtd *.mod *.ent $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/xml-dtd-%{ver}
+install *.dtd *.mod $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/xml-dtd-%{ver}
+install *.ent $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/xml-dtd-%{ver} || :
 cp -a ent $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/xml-dtd-%{ver}
 
 # associate default declaration for xml
@@ -60,10 +61,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 # Update the centralized catalog corresponding to this version of the DTD
-/usr/bin/install-catalog --add /etc/sgml/xml-docbook-4.1.cat /usr/share/sgml/docbook/xml-dtd-4.1/catalog > /dev/null
+/usr/bin/install-catalog --add /etc/sgml/xml-docbook-%{ver}.cat /usr/share/sgml/docbook/xml-dtd-%{ver}/catalog > /dev/null
 
 %postun
-/usr/bin/install-catalog --remove /etc/sgml/xml-docbook-4.1.cat /usr/share/sgml/docbook/xml-dtd-4.1/catalog > /dev/null
+/usr/bin/install-catalog --remove /etc/sgml/xml-docbook-%{ver}.cat /usr/share/sgml/docbook/xml-dtd-%{ver}/catalog > /dev/null
 
 %files
 %defattr(644,root,root,755)
