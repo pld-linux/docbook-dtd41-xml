@@ -4,14 +4,15 @@ Summary(pl):	DocBook DTD przeznaczone do pisania dokumentacji technicznej
 %define sver	41
 Name:		docbook-dtd%{sver}-xml
 Version:	1.0
-Release:	10
+Release:	11
 Vendor:		OASIS
 License:	Free
 Group:		Applications/Publishing/XML
 Source0:	http://www.oasis-open.org/docbook/xml/%{ver}/docbkx%{sver}.zip
 Patch0:		%{name}-dbcentx.patch
 URL:		http://www.oasis-open.org/docbook/
-Requires:	sgml-common >= 0.5
+PreReq:		sgml-common >= 0.5
+Requires(post,preun):	/usr/bin/install-catalog
 BuildRequires:	unzip
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildArch:	noarch
@@ -56,10 +57,6 @@ EOF
 #grep -v 'ISO ' docbook.cat >> $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/xml-dtd-%{ver}/catalog
 cat docbook.cat >> $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/xml-dtd-%{ver}/catalog
 
-
-gzip -9nf *.txt
-[ ! -f ChangeLog ] || gzip -9nf ChangeLog
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -67,10 +64,10 @@ rm -rf $RPM_BUILD_ROOT
 # Update the centralized catalog corresponding to this version of the DTD
 /usr/bin/install-catalog --add /etc/sgml/xml-docbook-%{ver}.cat /usr/share/sgml/docbook/xml-dtd-%{ver}/catalog > /dev/null
 
-%postun
+%preun
 /usr/bin/install-catalog --remove /etc/sgml/xml-docbook-%{ver}.cat /usr/share/sgml/docbook/xml-dtd-%{ver}/catalog > /dev/null
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
+%doc *.txt ChangeLog
 %{_datadir}/sgml/docbook/*
