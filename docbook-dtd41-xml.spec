@@ -4,7 +4,7 @@ Summary(pl):	DocBook DTD przeznaczone do pisania dokumentacji technicznej
 %define sver	41
 Name:		docbook-dtd%{sver}-xml
 Version:	1.0
-Release:	1
+Release:	8
 Vendor:		OASIS
 License:	Free
 Group:		Applications/Publishing/XML
@@ -13,6 +13,7 @@ Group(pl):	Aplikacje/Publikowanie/XML
 URL:		http://www.oasis-open.org/docbook/
 Source0:	http://www.oasis-open.org/docbook/xml/%{ver}/docbkx%{sver}.zip
 Requires:	sgml-common >= 0.5
+BuildRequires:	unzip
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildArch:	noarch
 
