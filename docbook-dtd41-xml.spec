@@ -1,5 +1,5 @@
 Summary:	XML/SGML DocBook DTD 4.1
-Summary(pl):	XML/SGML DocBook DTD 4.1
+Summary(pl.UTF-8):   XML/SGML DocBook DTD 4.1
 %define ver	4.1
 %define sver	41
 Name:		docbook-dtd%{sver}-xml
@@ -28,9 +28,9 @@ DocBook is an XML/SGML vocabulary particularly well suited to books and papers
 about computer hardware and software (though it is by no means limited to only
 these applications).
 
-%description -l pl
-DocBook DTD jest zestawem definicji dokumentów XML/SGML przeznaczonych do
-tworzenia dokumentacji technicznej. Stosowany jest do pisania podrêczników
+%description -l pl.UTF-8
+DocBook DTD jest zestawem definicji dokumentÃ³w XML/SGML przeznaczonych do
+tworzenia dokumentacji technicznej. Stosowany jest do pisania podrÄ™cznikÃ³w
 systemowych, instrukcji jak i wielu innych ciekawych rzeczy.
 
 %prep
