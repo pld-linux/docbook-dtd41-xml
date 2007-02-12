@@ -1,5 +1,5 @@
 Summary:	XML/SGML DocBook DTD 4.1
-Summary(pl.UTF-8):   XML/SGML DocBook DTD 4.1
+Summary(pl.UTF-8):	XML/SGML DocBook DTD 4.1
 %define ver	4.1
 %define sver	41
 Name:		docbook-dtd%{sver}-xml
