@@ -4,7 +4,7 @@ Summary(pl.UTF-8):	XML/SGML DocBook DTD 4.1
 %define sver	41
 Name:		docbook-dtd%{sver}-xml
 Version:	1.0
-Release:	13
+Release:	14
 Vendor:		OASIS
 License:	Free
 Group:		Applications/Publishing/XML
@@ -12,7 +12,7 @@ Source0:	http://www.oasis-open.org/docbook/xml/%{ver}/docbkx%{sver}.zip
 # Source0-md5:	90afec959a2a8c8636b121c198a30de8
 Patch0:		%{name}-dbcentx.patch
 URL:		http://www.oasis-open.org/docbook/
-PreReq:		sgml-common >= 0.5
+Requires(pre):	sgml-common >= 0.5
 Requires(post,preun):	/usr/bin/install-catalog
 BuildRequires:	unzip
 BuildRequires:	rpm-build >= 4.0.2-94
