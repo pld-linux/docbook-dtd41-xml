@@ -12,16 +12,16 @@ Source0:	http://www.oasis-open.org/docbook/xml/%{ver}/docbkx%{sver}.zip
 # Source0-md5:	90afec959a2a8c8636b121c198a30de8
 Patch0:		%{name}-dbcentx.patch
 URL:		http://www.oasis-open.org/docbook/
-Requires(pre):	sgml-common >= 0.5
-Requires(post,preun):	/usr/bin/install-catalog
 BuildRequires:	unzip
 BuildRequires:	rpm-build >= 4.0.2-94
+Requires(post,preun):	/usr/bin/install-catalog
+Requires:	sgml-common >= 0.5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildArch:	noarch
 
-%define dtd_path		%{_datadir}/sgml/docbook/xml-dtd-%{ver}
-%define	xmlcat_file		%{dtd_path}/catalog.xml
-%define	sgmlcat_file	%{dtd_path}/catalog
+%define		dtd_path	%{_datadir}/sgml/docbook/xml-dtd-%{ver}
+%define		xmlcat_file	%{dtd_path}/catalog.xml
+%define		sgmlcat_file	%{dtd_path}/catalog
 
 %description
 DocBook is an XML/SGML vocabulary particularly well suited to books and papers
