@@ -36,7 +36,7 @@ systemowych, instrukcji jak i wielu innych ciekawych rzeczy.
 %prep
 %setup -q -c
 chmod -R a+rX *
-%patch0 -p1
+%patch -P0 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
